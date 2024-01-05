@@ -1,0 +1,82 @@
+… a toda prisa, durmiendo poco y hasta arriba de cafeína.
+
+Y por eso hemos sufrido las deficiencias en su diseño durante años.
+
+Pero, ¿a qué venía tanta urgencia por lanzarlo al mercado?
+
+Bien, contextualicemos.
+
+“La web no tendrá ningún futuro”.
+
+Esas fueron las palabras de Bill Gates a principios de los 90, pero no tardó mucho en darse cuenta de que se las tragaría.
+
+A finales de 1994 estaba tocando en la puerta de Netscape, para intentar comprarlo.
+
+Sus dueños que de aquellas no querían saber nada, ni de Bill Gates, ni de Microsoft, ni de su ridícula oferta, le cerraron la puerta en las narices.
+
+Por aquel entonces la web estaba empezando a ganar popularidad y Netscape Navigator era el navegador más usado, prácticamente era un standard.
+
+Microsoft tenía dos opciones:
+
+Comprarlo o copiarlo.
+
+En ese momento el equipo de Netscape ya estaba planteándose la idea de hacer programable el browser para ofrecer una experiencia más interactiva a los usuarios.
+
+Y Brendan Eich, que había sido contratado un año antes, estaba trabajando en integrar Scheme como el lenguaje para la web.
+
+Pero después de rechazar la oferta de Microsoft todo cambió.
+
+La sensación de urgencia se apoderó del equipo de Netscape, el ritmo se volvió frenético.
+
+Sabían que Microsoft iba a copiarlos y tratar de hacerse con el mercado.
+
+De pronto los managers le pusieron como restricción al bueno de Brendan que el nuevo lenguaje debía parecerse a C y Java.
+
+Ya sabes, imperativo, con llaves y puntos y comas.
+
+La opción de integrar Scheme se había esfumado, pero aún así Eich se empeñó en añadir algunas características de este lenguaje, como que las funciones fueran ‘ciudadanos de primera clase’.
+
+Esto significa que las funciones se pueden tratar como cualquier otro valor. Es decir, se pueden almacenar en variables, pasar como argumento o devolver desde otras funciones, sin ningún tratamiento especial.
+
+En mi opinión esta es una de las mejores características que tiene JavaScript.
+
+Bien.
+
+Un jueves por la noche, a principios de Mayo de 1995, Brendan empezó a trabajar en la primera versión del lenguaje.
+
+10 días después, tras mucho café y pocas horas de sueño, había nacido la primera versión de Mocha.
+
+En mi opinión una estrategía de marketing bastante pobre, la idea de este nombre era para aprovechar el tirón que estaba teniendo Java en aquel momento.
+
+Una estrategia que confundió a generaciones de programadores, ya que nada tiene que ver un lenguaje con el otro, más allá de las llaves y los puntos y comas.
+
+Después de esos 10 días locos algunos early adopters internos querían que el lenguaje realizara conversiones implícitas de tipos.
+
+El objetivo era poder realizar operaciones entre diferentes tipos, por ejemplo, comparar un número con un string.
+
+A esto se le conoce como coerción y es uno de los errores de diseño iniciales de los que Brendan Eich más se arrepiente.
+
+Esta funcionalidad permite obtener resultados tan sorprendentes como estos:
+
+console.log(1 == “1”)      //true
+console.log([] == [])       //false
+console.log([] == "")      //true
+console.log(3 - "1")      //2
+console.log(3 + "1")     //"31"
+
+O tan desconcertantes como estos otros:
+
+console.log(NaN === NaN)
+//false
+console.log([1, 2, 3] + [4, 5, 6])
+//"1,2,34,5,6"
+console.log([] + {})
+//"[object Object]"
+console.log("b" + "a" + +"a" + "a")
+// "baNaNa"
+
+Por errores de diseño como este, y otros que comentaremos más adelante, es fundamental utilizar TypeScript y escribir tests de calidad.
+
+Repite conmigo:
+
+Sin tipos y sin buenos tests es imposible escribir código de calidad en JavaScript.
