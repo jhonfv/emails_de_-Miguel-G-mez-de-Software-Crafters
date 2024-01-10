@@ -1,0 +1,55 @@
+Hola null,
+
+Seguro que en más de un email o app te han saludado así (aunque no en esta newsletter)
+
+O quizás en tu propio código te has encontrado con problemas de este tipo:
+
+TypeError: null is not an object
+
+TypeError: null or undefined has no properties
+
+Esto sucede cuando se propaga el valor nulo por la aplicación y se genera una excepción no controlada.
+
+A pesar de estos errores seguimos usando null alegremente en nuestro código.
+
+La cosa empeora en JavaScript porque además de null tenemos undefined, dos valores para indicar la ausencia de valor.
+
+Qué podría salir mal…
+
+Bien.
+
+La sentencia null nació por un hecho fortuito en la década de 1960.
+
+Tony Hoare, ganador del premio Turing, lo agregó al lenguaje ALGOL W, porque en aquel momento le parecía práctico y sencillo de implementar.
+
+Varias décadas después mostró su arrepentimiento.
+
+Estas fueron sus palabras:
+
+Lo llamo mi error del billón de dólares…
+
+En aquella época, estaba diseñando el primer sistema de tipos estáticos para un lenguaje orientado a objetos.
+
+Mi objetivo era garantizar que todo uso de referencias fuera absolutamente seguro, con una verificación realizada automáticamente por el compilador.
+
+Pero no pude resistir la tentación de habilitar las referencias a null, simplemente porque era muy fácil de implementar.
+
+Esto ha llevado a innumerables errores, vulnerabilidades y fallas en los sistemas.
+
+Lo que probablemente ha causado miles de millones de dólares de dolor y daños en los últimos cuarenta años.
+
+Tony Hoare, en la Qcon Conference de Londres en 2009.
+
+Asignar valores a null es un problema, pero devolverlos en funciones aún lo es más.
+
+Ya que obliga al cliente a preguntar si la respuesta es nula para tomar la decisión de qué flujo debe continuar.
+
+Esto provoca un acoplamiento oculto entre la API y quien la utiliza.
+
+Recuerda, en un buen diseño debemos buscar el mínimo acoplamiento y la máxima cohesión.
+
+Además, cuando devolvemos null lo único que conseguiremos es que se propague un estilo de programación defensiva a lo largo de nuestro código, lo que empeora la legibilidad e incrementa la complejidad accidental.
+
+Muchos lenguajes añaden azúcar sintáctico para preguntar por los nulos, mediante operadores como el Elvis o null coalescing operator.
+
+Esto no significa que nos quiten de encima las comprobaciones ni los peligros de trabajar con null o undefined, simplemente simplifican su sintaxis.
